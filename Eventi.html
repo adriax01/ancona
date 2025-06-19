@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventi - La Casa In Campagna</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
+
+  <style>
+    @font-face {
+      font-family: 'Rosemartin';
+      src: url('Rosemartin.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rosemartin', serif;
+      background-color: #EDE8D0;
+      background-image: url('Foto/background%20ogni%20immagine/Sfondo.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: black;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 80px;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.6rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 40px;
+    }
+
+    .contenuto {
+      max-width: 3200px;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .contenuto p {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .contenuto img {
+      width: 350px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .contenuto {
+        padding: 1rem;
+      }
+
+      .contenuto p {
+        font-size: 1.5rem;
+      }
+
+      .contenuto img {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MENU -->
+  <nav>
+    <ul>
+      <li><a href="ancona.html">HOME</a></li>
+	  <li><a href="Menu.html">MENU</a></li>
+      <li><a href="Eventi.html">EVENTI</a></li>
+      <li><a href="Camere.html">CAMERE</a></li>
+	   <li><a href="Piscina.html">PISCINA</a></li>
+      <li><a href="Contattaci.html">CONTATTACI</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENUTO -->
+  <h1>EVENTI CASA IN CAMPAGNA</h1>
+
+  <div class="contenuto">
+   <p>
+  Vivi con noi momenti unici nella cornice tranquilla della campagna.<br>
+  Organizziamo serate a tema, cene con musica dal vivo, degustazioni,<br>
+  pranzi della domenica e feste su prenotazione.
+</p>
+
+
+    <img
+      src="Foto/eventi/1_maggio_2022.webp""
+      alt="Evento 1 maggio"
+	 
+    />
+  </div>
+
+</body>
+</html>
