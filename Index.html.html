@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Casa In Campagna</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Rosemartin', serif;
+      background: url('Foto/background ogni immagine/Sfondo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: black;
+    }
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo {
+      width: 900px;
+      max-width: 90%;
+    }
+
+    nav {
+      margin-top: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    nav ul li {
+      flex: 0 1 150px;
+      text-align: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.8rem;
+    }
+
+    .carousel {
+      max-width: 667px;
+      margin: 40px auto;
+    }
+
+    /* Immagini carosello dimensioni fisse */
+    .carousel img {
+      width: 667px;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .descrizione {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      font-size: 1.8rem;
+      padding: 0 20px;
+    }
+
+    .descrizione h2 {
+      margin-top: 60px;
+      font-size: 3rem;
+    }
+
+    .menu-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+    }
+
+    /* Layout menu: immagini una a sinistra e una a destra */
+    .menu-gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .menu-gallery img {
+      width: 600px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    #zoomModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #zoomedImage {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    #zoomModalMenu {
+      display:none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #zoomedImageMenu {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .descrizione {
+        font-size: 1.5rem;
+      }
+      .descrizione h2 {
+        font-size: 2.2rem;
+      }
+
+      /* Adatta dimensioni immagini su mobile */
+      .carousel img, .menu-gallery img {
+        width: 100%;
+        height: auto;
+      }
+
+      .menu-gallery {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SEZIONE 1: INTRO + CAROSELLO -->
+  <section class="section" id="home">
+    <header>
+      <img src="bianco.png" alt="Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="#home">BENVENUTI</a></li>
+          <li><a href="#menu">MENU</a></li>
+          <li><a href="Eventi.html">EVENTI</a></li>
+          <li><a href="Camere.html">CAMERE</a></li>
+          <li><a href="Piscina.html">PISCINA</a></li>
+          <li><a href="Contattaci.html">CONTATTACI</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Carosello -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="Foto/fuoricarino/fuori1.webp" class="d-block" alt="Foto 1" onclick="openZoom(0)">
+        </div>
+        <div class="carousel-item">
+          <img src="Foto/fuoricarino/1.webp" class="d-block" alt="Foto 2" onclick="openZoom(1)">
+        </div>
+        <div class="carousel-item">
+          <img src="Foto/fuoricarino/2.webp" class="d-block" alt="Foto 3" onclick="openZoom(2)">
+        </div>
+        <div class="carousel-item">
+          <img src="Foto/fuoricarino/fuori2.webp" class="d-block" alt="Foto 4" onclick="openZoom(3)">
+        </div>
+        <div class="carousel-item">
+          <img src="Foto/fuoricarino/3.webp" class="d-block" alt="Foto 5" onclick="openZoom(4)">
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Modal zoom con navigazione -->
+    <div id="zoomModal" onclick="closeZoom()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;">
+      <button onclick="prevZoom(event)" style="position:absolute; left: 20px; top:50%; transform:translateY(-50%); font-size: 3rem; background: none; border: none; color: white;">←</button>
+      <img id="zoomedImage" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;" />
+      <button onclick="nextZoom(event)" style="position:absolute; right: 20px; top:50%; transform:translateY(-50%); font-size: 3rem; background: none; border: none; color: white;">→</button>
+    </div>
+
+    <script>
+      const imageSources = [
+        "Foto/fuoricarino/fuori1.jpeg",
+        "Foto/fuoricarino/1.jpg",
+        "Foto/fuoricarino/2.jpg",
+        "Foto/fuoricarino/fuori2.jpeg",
+        "Foto/fuoricarino/3.jpg"
+      ];
+
+      let currentZoomIndex = 0;
+
+      function openZoom(index) {
+        currentZoomIndex = index;
+        document.getElementById("zoomedImage").src = imageSources[index];
+        document.getElementById("zoomModal").style.display = "flex";
+      }
+
+      function closeZoom() {
+        document.getElementById("zoomModal").style.display = "none";
+      }
+
+      function prevZoom(event) {
+        event.stopPropagation();
+        currentZoomIndex = (currentZoomIndex - 1 + imageSources.length) % imageSources.length;
+        document.getElementById("zoomedImage").src = imageSources[currentZoomIndex];
+      }
+
+      function nextZoom(event) {
+        event.stopPropagation();
+        currentZoomIndex = (currentZoomIndex + 1) % imageSources.length;
+        document.getElementById("zoomedImage").src = imageSources[currentZoomIndex];
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (document.getElementById("zoomModal").style.display === "flex") {
+          if (e.key === "Escape") closeZoom();
+          else if (e.key === "ArrowRight") nextZoom(e);
+          else if (e.key === "ArrowLeft") prevZoom(e);
+        }
+      });
+    </script>
+
+    <div class="descrizione">
+      <p>Nelle tranquille campagne attorno ad Ancona, La Casa in Campagna è un ristorante dove la cucina marchigiana prende vita tra sapori autentici e atmosfere rustiche.</p>
+      <h2>IL GUSTO E IL VALORE DELLA TRADIZIONE DI CASA</h2>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: MENU -->
+  <section class="section menu-section" id="menu">
+    <h2>QUESTI SONO I MENU DELLA CASA IN CAMPAGNIA</h2>
+    <div class="menu-gallery">
+      <img src="Foto/Menu/PRIMA_PARTE.webp" alt="Menu 1" onclick="zoomImage(this.src)">
+      <img src="Foto/Menu/SECONDA_PARTE.webp" alt="Menu 2" onclick="zoomImage(this.src)">
+    </div>
+  </section>
+
+  <!-- Zoom Modal menu -->
+  <div id="zoomModalMenu" onclick="closeZoomMenu()" style="display:none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;">
+    <img id="zoomedImageMenu" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;" />
+  </div>
+
+  <script>
+    function zoomImage(src) {
+      document.getElementById('zoomedImageMenu').src = src;
+      document.getElementById('zoomModalMenu').style.display = 'flex';
+    }
+
+    function closeZoomMenu() {
+      document.getElementById('zoomModalMenu').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeZoomMenu();
+    });
+  </script>
+
+</body>
+</html>
